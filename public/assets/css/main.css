@@ -1,0 +1,17 @@
+body {
+    background-color:#EFF1F7;
+    color: #1B0A31;
+
+}
+
+header {
+    font-size: 75px;
+    
+}
+header::after{
+    background-image: url('../images/fond-header.jpg') ;
+    
+    background-size: cover;
+    height: 100vh;
+}
+
