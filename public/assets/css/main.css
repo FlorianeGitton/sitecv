@@ -1,17 +1,23 @@
 body {
     background-color:#EFF1F7;
     color: #1B0A31;
-
+    font-family: 'Assistant', sans-serif;
+    padding: 2vw 3vw;
+    font-weight: 300;
 }
 
-header {
-    font-size: 75px;
-    
-}
-header::after{
-    background-image: url('../images/fond-header.jpg') ;
-    
-    background-size: cover;
+
+header{
+    /* background-image : linear-gradient(to right, rgba( 239, 241, 247, 0.2) 0%, rgba(239, 241, 247, 0.2) 0%), url("../images/fond-header.jpg");
+    background-size: cover; */
     height: 100vh;
+    font-size: 2vw;
 }
+.button{
+    text-align: right;
+}
+.button_contact{
+    margin-left: 20px;
+}
+
 
