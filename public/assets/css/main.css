@@ -1,23 +1,351 @@
-body {
+body,html{
+    margin: 0;
     background-color:#EFF1F7;
     color: #1B0A31;
     font-family: 'Assistant', sans-serif;
-    padding: 2vw 3vw;
+    padding: 0 3vw 2vw 3vw;
+    font-size: 4vw;
+    font-weight: 200;
+}
+
+*{box-sizing: border-box;}
+
+*:focus {
+    box-shadow: 0 0 4px #1B0A31;
+}
+
+/* header{
+     background-image : linear-gradient(to right, rgba( 239, 241, 247, 0.2) 0%, rgba(239, 241, 247, 0.2) 0%), url("../images/fond-header.jpg");
+    background-size: cover; 
+    
+    
+} */
+
+h1 {
+    position: absolute;
+    text-indent: -9999px;
+    z-index: -10;
+}
+
+.button{
+    text-align: right;
+    color: #1B0A31;
+    
+}
+.button .btn {
+    text-decoration:none;
+    color: #1B0A31;
+    
+}
+.button .btn:hover {
+    text-decoration:none;
+    color:#EFF1F7; 
+}
+.button_btn{
+    
+    padding: 20px 30px;
+    border: 1px solid #1B0A31;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: 400;
+}
+
+.button_btn:hover{
+    background-color: #1B0A31;
+    color: #EFF1F7;
+    transition: all 0.5s ease-in-out;
+}
+
+.resume {
+    margin-top: -40px;
+    
+}
+.resume__presentation {
+    margin-bottom: 0;
+}
+strong {
+    font-weight: 400;
+}
+
+.title{
+    font-family: 'Bai Jamjuree', sans-serif;
+    text-transform:uppercase;
+    font-size: 1.3vw;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 150px;
+}
+
+.link-style-title {
+    text-decoration: none; 
+    color: #1B0A31;  
+} 
+
+.link-modal{
+    margin-top: 0;
+    font-weight: 200;
+    font-size: 4vw;
+}
+
+.last-experience-title{
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 4vw;
+}
+.last-experience-project{
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 4vw;
+}
+.link-style{
+    text-decoration: none; 
+    color: #1B0A31;  
+    font-size: 3.5vw;
+    font-weight: 300;
+}
+.link-style:hover{
+    color: #2f3031;
+    font-weight: 200;
+}
+.text {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.last-study-title{
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 4vw;
+}
+.last-study-subtitle{
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 4vw;
+}
+.link-school{
+    text-decoration: none;
+    color:#2f3031;
+    font-size: 3vw;
+}
+.link-school:hover{
+    color: #2f3031;
     font-weight: 300;
 }
 
+/* fenêtre modale ------------------------------------------------------------------------------------------------------*/
+#modal, #modalExp, #modalStudy{
+    background-color:rgba(27,10,49, 0.95);
+    }
 
-header{
-    /* background-image : linear-gradient(to right, rgba( 239, 241, 247, 0.2) 0%, rgba(239, 241, 247, 0.2) 0%), url("../images/fond-header.jpg");
-    background-size: cover; */
-    height: 100vh;
+.modal{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba (0,0,0,0.8);
+    animation: fadeIn .3s both; 
+}
+
+.modal-wrapper{
+    font-family: 'Assistant', sans-serif;
+    overflow: auto;
+    width: 80%;
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+    padding: 4vw;
+    background-color:#EFF1F7;
+    animation: slideFromTop .5s both;
+}
+
+.modal[aria-hidden = "true"]{
+    animation-name: fadeOut;
+}
+
+.modal[aria-hidden = "true"] .modal-wrapper{
+    animation-name: slideFromBottom;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeOut {
+    from { opacity: 1;}
+    to {opacity: 0;}
+}
+
+@keyframes slideFromTop {
+    from { transform: translateY(-50px);}
+    to {transform: translateY(0px);}
+}
+
+@keyframes slideFromBottom {
+    from { transform: translateY(0px);}
+    to {transform: translateY(-50px);}
+}
+
+.modal-body{
+    font-size: 3vw;
+}
+
+.modal-header__btn{
+    font-size: 1vw;
+    float: right;
+    padding: 10px 15px;
+    border: 0.5 solid #1B0A31;
+    margin-top: -25px;
+}
+.modal-body__headline {
+    font-size: 2vw;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Bai Jamjuree',sans-serif;
+    margin-top: 25px;
+}
+/* fin de modal basique --------------------------------------------------------------------------------------------*/
+
+
+.modal-body__title {
+    font-family: 'Assistant',sans-serif;
+    font-weight: 300;
+    margin-bottom: 5px;
+    font-size: 2.5vw;
+}
+ul {
+    margin-top: 0;
+}
+.modal-body__puce {
+    list-style-type: none;
+    text-align: center;
+    margin-top: 25px;
+}
+.modal-body__puce strong {
+    text-transform: uppercase;
+    font-size: 2vw;
+    font-family: 'Bai Jamjuree',sans-serif;
+    font-weight: 400;
+}
+/* .modal-body__puce:before {
+    content: "- ";
+} */
+.modal-body__friend-unicorn {
+    text-decoration: none;
+    color:#2f3031;
+    
+}
+.modal-body__friend-unicorn:hover {
+    color: #2f3031;
+    font-weight: 300;
+}
+.modal-body__text {
+    margin-top: 0;
+}
+
+.modal-body__text-video {
+    margin-top: 0;
+    text-align: center;
+}
+
+/* fin de la modal de projet */
+/* ------------------------------------------------------------------------------------------------------------- */
+/* début modale expérience */
+.exp{
+    text-align: center;
+}
+.modal-body__job{
+    font-weight: 300;
+    margin-bottom: 0;
+    font-size: 3vw;
+}
+.modal-body__project{
+    font-weight: 200;
+    margin: 0;
+    font-size: 3vw;
+}
+.modal-body__description{
+    font-weight: 200;
+    margin-top: 0;
+    font-family: 'Bai Jamjuree',sans-serif;
     font-size: 2vw;
 }
-.button{
-    text-align: right;
+/* fin modale Exp */
+/* ---------------------------------------------------------------------------------- */
+/* Début modale d'Etude */
+.study{
+    text-align: center;
 }
-.button_contact{
-    margin-left: 20px;
+.modal-body__degree{
+    font-size: 3vw;
+    margin-bottom: 0;
+    font-weight:300;
 }
-
-
+.modal-body__school{
+    font-size: 3vw;
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.modal-body__link-school{
+    text-decoration: none;
+    color:#2f3031;
+}
+.modal-body__link-school:hover{
+    color: #2f3031;
+    font-weight: 300;
+}
+.modal-body__school-location{
+    margin-top:0;
+    font-weight: 200;
+    font-size: 2vw;
+    font-family: 'Bai Jamjuree',sans-serif;
+    margin-bottom: 0;
+}
+.modal-body__description-study{
+    font-size: 2vw;
+    font-family: 'Assistant',sans-serif;
+}
+.modal-body__description-study-list {
+    font-size: 2vw;
+}
+.modal-body__description-study-list li {
+    list-style-type: none;
+    
+}
+/* fin de study */
+/* ------------------------------------------------------------------------------------------------------- */
+/* début centre d'intérêt */
+.hobbies{
+    margin-top: 0;
+    font-size: 3.5vw;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+.hobbies-continuation {
+    margin-top: -25px;
+    font-size: 4vw;
+    font-weight: 200;
+    margin-bottom: 0;
+}
+/* fin de hobbies */
+/* ----------------------------------------------------------------------------------------------------- */
+/* debut social */
+.social{
+    margin-top: 150px;
+    font-family: 'Bai Jamjuree',sans-serif;
+}
+.social__item{
+    font-size: 4vw;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 200;
+}

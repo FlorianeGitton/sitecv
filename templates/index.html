@@ -1,3 +1,6 @@
+<?php
+    include '_inc.php'; 
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,48 +8,122 @@
         <link rel="stylesheet" href="">
         <title>Floriane Gitton</title>
         <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300&display=swap" rel="stylesheet">
-
-        <link rel="stylesheet" href="../public/assets/css/normalize.css">
-        <link rel="stylesheet" href="../public/assets/css/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="../assets/css/normalize.css">
+        <link rel="stylesheet" href="../assets/css/main.css">
         
 
     </head>
     <body>
         <header>
             
+            
             <div class="button">
-                <button class="button_contact"><span>Me Contacter</span></button>
-                <button>télécharger mon cv</button>
+                <a class="btn" href="#contact"><button class="button_btn"><span>Me Contacter</span></button></a>
+
+                <aside id="contact" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
+                    <div class="modal-wrapper js-modal-stop">
+                        <button class="js-modal-close">fermer la boite modale</button>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class="modal-body__headline">Me contacter</h3>
+                        <form action="contact.php" method="POST">
+                            <div>
+                                <label for="inputname">Votre nom</label>
+                                <input type="text" name="name" id="inputname">
+                            </div>
+                            <div>
+                                <label for="inputname">Votre email</label>
+                                <input type="text" name="email" id="inputemail">
+                            </div>
+                            <div>
+                                <label for="inputmessage">Votre message</label>
+                                <textarea name="message" id="inputmessage" cols="30" rows="10"></textarea>
+                            </div>
+                            <button type="submit">Envoyer</button>
+                        </form>
+
+                    </div>
+                </aside>
+                <a class="btn" href=""><button class="button_btn">télécharger mon cv</button></a>
             </div>
+
+
             <div>
-            <h1>
-                Bonjour je suis Floriane.Je suis développeuse Back-End Junior. Je suis actuellement en recherche d'emploi ou de stage, j'habite en île de France,
-                mobilité en france métropolitaine et possibilité de télétravail. J'ai était Vendeuse Assistante en surgelée pendant 4 ans avant de faire une formation intensive 
-                de 6 mois dans l'école O'Clock, spécialisation Symfony.
-            </h1> 
+
+                <?php if(array_key_exists('errors', $_SESSION)): ?>
+                
+                <div >
+                    <?= implode('<br>', $_SESSION['errors']); ?>
+                </div>
+
+                <?php  endif; ?>
+
+                <?php if(array_key_exists('success', $_SESSION)): ?>
+                
+                <div>
+                    Votre email à bien été envoyé
+                </div>
+
+                <?php  endif; ?>
+
+                
+                <form action="contact.php" method="POST">
+                    
+                    <?php $form= new Form(isset($_SESSION['inputs']) ? $_SESSION['inputs'] : []); ?>
+                    <?= $form->text('name', 'Votre Nom'); ?>
+                    <?= $form->email('email', 'Votre email'); ?>
+                    <div>
+
+                        <?= $form->textarea('message', 'votre message'); ?>
+                        
+                        <button type="submit">Envoyer</button>
+                    </div>
+                </form>
+
+                <h2>Debug :</h2>
+                <?= var_dump($_SESSION); ?>
+
             </div>
+
+
+
+            
             
         </header>
         <main>
-            
-            <div>
-                <h2>Projet Réalisé </h2>
-                <div>
-                    <h3>Développeuse web et Scrum Master du projet de fin d'études : His Life</h3>
+            <h1>Floriane Gitton - Developpeuse BackEnd</h1>
+            <div class="resume">
+                
+                <p class="resume__presentation">
+                    Bonjour je suis Floriane. Je suis développeuse Back-End Junior. Je suis actuellement en recherche d'un
+                    <strong>emploi</strong>
+                     ou d'un 
+                    <strong>stage,</strong>
+                     j'habite en Île de France,
+                    mobilité en
+                    <strong>France métropolitaine</strong>
+                    et possibilité de
+                    <strong>télétravail.</strong>
+                     J'ai été Vendeuse Assistante de produits surgelés pendant 4 ans avant de faire une 
+                    <strong>formation intensive de 6 mois</strong>
+                     dans l'école O'Clock, spécialisation
+                    <strong>Symfony.</strong>
+                    
+                </p> 
+            </div>
+            <!-- <a href="#modal1" class="js-modal">Ouvrir la boite modal</a>
+
+
+
+            <aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
+                <div class="modal-wrapper js-modal-stop">
+                    <button class="js-modal-close">fermer la boite modale</button>
+                    <h3 id="titlemodal">Développeuse web et Scrum Master du projet de fin d'études : His Life</h3>
+                    <input type="text">
                     <p>
                         Conception et création d'un site web pour les parents séparés pour la vie ou le travail et veulent être au courant au jour le jour de la vie de leur(s)
                         enfant(s).
-                    </p>
-                    <p>
-                        Fonctionnalité dans le site : création de compte personnel et d'une famille avec un lien d'invitation pour faciliter l'ajout de l'autre parent,
-                        profil de(s) enfant(s), dashboard dynamique en rapport aux derniers infos ajouté , stockage de documents (photo : de bulletin de note, carnet de santé et
-                        mots des professeurs.), Calendrier interactif, messagerie par posts, galerie photo, répertoire de contacts 
-                    </p>
-                    <p>
-                        Développement Back-End : Symfony,Adminer,MySQL,Calendar bundle de symfony
-                    </p>
-                    <p>
-                        Développement Front-End : HTML5, CSS3, Bootstrap, Twig
                     </p>
                     <p>
                         Réalisé par 4 Développeur (on a tous fait la spécialisation Symfony):
@@ -56,144 +133,256 @@
                         Gaëtan Canovas : Lead Developpeur Back et Développeur Back-End (<a href="https://gaetancanovas.dev/"> gaetancanovas.dev</a>) 
                         et Moi (Floriane Gitton) : Scrum Master et Développeuse Back-End
                     </p>
-                    <p>
-                        Réalisé en 4 semaines intensives :
-                        <br>
-                        Créations du cahier des charges de A à Z : choix des fonctionnalitées, spécificités techniques, MVP (Minimum Viable Product), MCD (Modèle Conceptuel des
-                        Données), wireframes, charte graphique et les user stories.
-                    </p>
-                    <p>
-                        Démonstration du projet 
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/N6r0w_LuQu4?start=2283"
-                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </p>               
+                </div>
+
+            </aside> -->
+
+            
+            <div>
+                <h2 class="title">Projet Réalisé </h2>
+                <div>
+                    <h3 class="link-modal"><a href="#modal" class="js-modal link-style-title">Développeuse Back-End et Scrum Master du projet de fin de formation : His Life</a></h3>
                     
+                    <aside id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
+                        <div class="modal-wrapper js-modal-stop">
+                            <div class="modal-header">
+                                <button class="js-modal-close modal-header__btn button_btn">fermer la boite modale</button>
+                            </div>
+                            <div class="modal-body">
+                                <h3 class="modal-body__headline">His Life</h3>
+                                <p>
+                                    Conception et création d'un site web pour les parents séparés pour la vie ou le travail et veulent être au courant au jour le jour de la vie de leur(s)
+                                    enfant(s).
+                                </p>
+                                <h4 class="modal-body__title">
+                                    Réalisé par 4 Développeurs (on a tous fait la spécialisation Symfony):
+                                </h4>  
+                                <ul>
+                                    <li class="modal-body__puce"><strong>Franck Bats</strong> 
+                                        <br> 
+                                        Git Master, Référent Technique et Développeur Back-End 
+                                        (<a class="modal-body__friend-unicorn" href="http://franck-bats.fr/">franck-bats.fr</a>)</li>
+                                    <li class="modal-body__puce"><strong>Audrey Bodin</strong>
+                                        <br>
+                                        Product Owner, Lead Developpeuse Front et Développeuse Back-End</li>
+                                    <li class="modal-body__puce"><strong>Gaëtan Canovas</strong>
+                                        <br>
+                                         Lead Developpeur Back et Développeur Back-End 
+                                        (<a class="modal-body__friend-unicorn" href="https://gaetancanovas.dev/">gaetancanovas.dev</a>)</li>
+                                    <li class="modal-body__puce"><strong>et Moi (Floriane Gitton)</strong>
+                                        <br>
+                                         Scrum Master et Développeuse Back-End</li> 
+                                </ul>
+                                <h4 class="modal-body__title">
+                                    Fonctionnalité dans le site :
+                                </h4>
+                                <p class="modal-body__text">
+                                    création de compte personnel et d'une famille avec un lien d'invitation pour faciliter l'ajout de l'autre parent,
+                                    profil de(s) enfant(s), dashboard dynamique en rapport aux derniers infos ajouté , stockage de documents (photo : de bulletin de note, 
+                                    carnet de santé et mots des professeurs.), Calendrier interactif, messagerie par posts, galerie photo, répertoire de contacts.
+                                </p>
+                                
+                                <h4 class="modal-body__title">
+                                    Développement Back-End :
+                                </h4>
+                                <p class="modal-body__text">
+                                    Symfony, Adminer, MySQL, Calendar bundle de symfony.
+                                </p>
+                                <h4 class="modal-body__title">
+                                    Développement Front-End :  
+                                </h4>
+                                <p class="modal-body__text">
+                                    HTML5, CSS3, Bootstrap, Twig.
+                                </p>
+                                <h4 class="modal-body__title">
+                                    Réalisé en 4 semaines intensives :
+                                </h4>
+                                <p class="modal-body__text">
+                                    Créations du cahier des charges de A à Z : choix des fonctionnalitées, spécificités techniques, MVP (Minimum Viable Product), MCD (Modèle Conceptuel des
+                                    Données), wireframes, charte graphique et les user stories.
+                                </p>
+                                <h4 class="modal-body__title">
+                                    Démonstration du projet :
+                                </h4>
+                                <p class="modal-body__text-video">
+                                    <br>
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/N6r0w_LuQu4?start=2283"
+                                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </p>               
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </div> 
             <!-- fin div de Projet -->
-
+            <!-- début d'expériences -->
             <div>
-                <h2>Expériences</h2>
+                <h2 class="title">Expériences</h2>
+                <div>
+                    <h3 class="last-experience-title">Scrum Master/Développeuse Web </h3>
+                    <h4 class="last-experience-project">His Life </h4>
+                </div>
+                <div class="link-modal">
+                    <a href="#modalExp" class="js-modal link-style">Voir mon parcours</a>
+                </div>
 
-                <div>
-                    <h3>Scrum Master/Développeuse Back-End</h3>
-                    <h4>His Life (en remote)
-                        <br>
-                        Mai-Juin 2020
-                    </h4>
-                    <h5>Développement du site "His Life" avec Symfony</h5>
-                </div>
-                <div>
-                    <h3>Vendeuse Assistante</h3>
-                    <h4>Picard Surgelés, Paris
-                        <br>
-                        Mars 2015 - Janvier 2020
-                    </h4>
-                    <h5>Relation client, encaissement, mise en rayon, manutention, commande... </h5>
-                </div>
-                <div>
-                    <h3> Stage de Graphiste</h3>
-                    <h4>Chupeta Paris, Paris
-                        <br>
-                        Juin-Juillet 2013
-                      </h4>
-                      <h5>Créations d'entitée visuelle de la marque (concevoir les dossiers presses, catalogues et flyers.)</h5>
-                </div>
-                <div>
-                    <h3>Stage de Graphiste</h3>
-                    <h4>IDGift/barbacado, Maison Alfort
-                        <br>
-                        Juin 2012
-                    </h4>
-                    <h5>Ajout de logo sur des produits, Modification de motifs et/ou couleurs des produits, Newletter, mailling et plaquette </h5>
-                </div>
-                <div>
-                    <h3>Hôtesse de caisse</h3>
-                    <h4>IKEA, Thiais, Val-de-Marne
-                        <br>
-                        Juin 2011 -Septembre 2011
-                    </h4>
-                    <h5>Relation client, assurer l'encaissement, scanner les produits et entretenir la caisse et son environnement</h5>
-                </div>
-                <div>
-                    <h3>Vendeuse Ouverture et Fermeture</h3>
-                    <h4>Boulangerie Paul, Thiais, Val-de-Marne
-                        <br>
-                        Octobre 2008 - Septembre 2010
-                    </h4>
-                </div>
+                <aside id="modalExp" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
+                    <div class="modal-wrapper js-modal-stop">
+                        <div class="modal-header">
+                            <button class="js-modal-close modal-header__btn button_btn">fermer la boite modale</button>
+                        </div>
+                        <div class="modal-body exp">
+                            <h3 class="modal-body__headline">Expériences</h3>
+                            <div>
+                                <h4 class="modal-body__job">Scrum Master/Développeuse Back-End</h4>
+                                <h5 class="modal-body__project">His Life (en remote)
+                                    <br>
+                                    Mai-Juin 2020
+                                </h5>
+                                <h6 class="modal-body__description">Développement du site "His Life" avec Symfony</h6>
+                            </div>
+                            <div>
+                                <h4 class="modal-body__job">Vendeuse Assistante</h4>
+                                <h5 class="modal-body__project">Picard Surgelés, Paris
+                                    <br>
+                                    Mars 2015 - Janvier 2020
+                                </h5>
+                                <h6 class="modal-body__description">Relation client, encaissement, mise en rayon, manutention, commande... </h6>
+                            </div>
+                            <div>
+                                <h4 class="modal-body__job"> Stage de Graphiste</h4>
+                                <h5 class="modal-body__project">Chupeta Paris, Paris
+                                    <br>
+                                    Juin-Juillet 2013
+                                </h5>
+                                <h6 class="modal-body__description">Créations d'entitée visuelle de la marque (concevoir les dossiers presses, catalogues et flyers.)</h6>
+                            </div>
+                            <div>
+                                <h4 class="modal-body__job">Stage de Graphiste</h4>
+                                <h5 class="modal-body__project">IDGift/barbacado, Maison Alfort
+                                    <br>
+                                    Juin 2012
+                                </h5>
+                                <h6 class="modal-body__description">Ajout de logo sur des produits, Modification de motifs et/ou couleurs des produits, Newletter, mailling et plaquette </h6>
+                            </div>
+                            <div>
+                                <h4 class="modal-body__job">Hôtesse de caisse</h4>
+                                <h5 class="modal-body__project">IKEA, Thiais, Val-de-Marne
+                                    <br>
+                                    Juin 2011 -Septembre 2011
+                                </h5>
+                                <h6 class="modal-body__description">Relation client, assurer l'encaissement, scanner les produits et entretenir la caisse et son environnement</h6>
+                            </div>
+                            <div>
+                                <h4 class="modal-body__job">Vendeuse Ouverture et Fermeture</h4>
+                                <h5 class="modal-body__project">Boulangerie Paul, Thiais, Val-de-Marne
+                                    <br>
+                                    Octobre 2008 - Septembre 2010
+                                </h5>
+                                <h6 class="modal-body__description"></h6>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
             </div>
+        
             <!-- fin de expérience  -->
             <div>
                 <div>
-                    <h2>Compétences</h2>
+                    <h2 class="title">Compétences</h2>
 
-                    <p>Symfony, PHP, MySQL, HTML5, CSS3, JavaScript</p>
+                    <p class="text">Symfony, PHP, MySQL, HTML5, CSS3, JavaScript.</p>
 
-                    <p>Anglais : intermediaire</p>
+                    <p class="text">Anglais : intermediaire.</p>
                 </div>
 
             </div>
             <!-- fin compétences -->
             <div>
-                <h2>Formations</h2>
+                <h2 class="title">Formations</h2>
                 <div>
-                    <h3>Formation Développeur Web et Mobile</h3>
-                    <h4>O'Clock - Labellisée Grande &Eacute;cole du Numérique
-                        <a href="">(voir le programme)</a>
+                    <h3 class="last-study-title">Formation Développeur Web et Mobile</h3>
+                    <h4 class="last-study-subtitle">O'Clock - Labellisée Grande &Eacute;cole du Numérique
                         <br>
-                        Janvier 2020 à Juin 2020
-                    </h4>
-                    <h5>
-                      Formation en Téléprésentiel  
-                    </h5>
-                    <p>735h intensives </p>
-                    <ul>
+                        <a href="https://oclock.io/formations/developpeur-web" class="link-school">(voir le programme)</a>
                         
-                        <li>3 mois de Socle : HTML5, CSS3, PHP, SQL, JavaScript, POO.</li>
-                        <li>1 mois de spécialisation en Symfony</li>
-                        <li>1 mois de projet : His Life <!-- voir à rajouter la présentation--> </li>
-                    </ul>
-
-                </div>
-                <div>
-                    <h3>Année Préparatoire - Prep'Web</h3>
-                    <h4>PREP'com
-                        <br>
-                        2011 - 2012
                     </h4>
-                    <h5>
-                        Bagnolet (Seine-Saint-Denis)
-                    </h5>
-                    <p>Stages de Graphiste : Chez Chupeta, Paris (créations d'entitée visuelle de la marque) et chez IDGift et Barbacado, </p>
+                    <div class="link-modal">
+                        <a href="#modalStudy" class="js-modal link-style">Voir mes études</a>
+                    </div>
                 </div>
-                <div>
-                    <h3>Brevet de Technicien Dessinateur Maquettiste option Arts Graphiques</h3>
-                    <h4>Elisa Lemonier
-                        <br>
-                        2006 - 2008
-                    </h4>
-                    <h5>
-                        Paris
-                    </h5>
+                <aside id="modalStudy" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
+                    <div class="modal-wrapper js-modal-stop">
+                        <div class="modal-header">
+                            <button class="js-modal-close modal-header__btn button_btn">fermer la boite modale</button>
+                        </div>
+                        <div class="modal-body study">
+                                <div>
+                                <h3 class="modal-body__headline">Formations</h3>
+                                <h4 class="modal-body__degree">Formation Développeur Web et Mobile</h4>
+                                <h5 class="modal-body__school">O'Clock - Labellisée Grande &Eacute;cole du Numérique
+                                    <br>
+                                    (<a href="https://oclock.io/formations/developpeur-web" class="modal-body__link-school">
+                                        voir le programme</a>)
+                                    <br>
+                                    Janvier 2020 à Juin 2020
+                                </h5>
+                                <h6 class="modal-body__school-location">
+                                Formation en Téléprésentiel 
+                                <span class="modal-body__description-study">735h intensives </span> 
+                                </h6>
+                                
+                                <ul class="modal-body__description-study-list">
+                                    
+                                    <li>=> 3 mois de Socle : HTML5, CSS3, PHP, SQL, JavaScript, POO.</li>
+                                    <li>=> 1 mois de spécialisation en Symfony</li>
+                                    <li>=> 1 mois de projet : His Life <!-- voir à rajouter la présentation--> </li>
+                                </ul>
 
-                </div>
+                            </div>
+                            <div>
+                                <h4 class="modal-body__degree">Année Préparatoire - Prep'Web</h4>
+                                <h5 class="modal-body__school">PREP'com
+                                    <br>
+                                    2011 - 2012
+                                </h5>
+                                <h6 class="modal-body__school-location">
+                                    Bagnolet (Seine-Saint-Denis)
+                                </h6>
+                            </div>
+                            <div>
+                                <h4 class="modal-body__degree">Brevet de Technicien Dessinateur Maquettiste
+                                    <br>
+                                     option Arts Graphiques</h4>
+                                <h5 class="modal-body__school">Elisa Lemonier
+                                    <br>
+                                    2006 - 2008
+                                </h5>
+                                <h6 class="modal-body__school-location">
+                                    Paris
+                                </h6>
+
+                            </div>
+                        </div>
+                    </div>
+                </aside>
             </div>
+        
             <!-- fin de formation -->
 
             <div>
-                <h2>Centres d'intérêts</h2>
+                <h2 class="title">Centres d'intérêts</h2>
                 <div>
-                    <h3>Les Parcs d'Attractions</h3>
-                    <h4>préférence pour les montagnes russes en bois</h4>
+                    <h3 class="hobbies">Les Parcs d'Attractions :</h3>
+                    <h4 class="hobbies-continuation">préférence pour les montagnes russes en bois.</h4>
                 </div>
                 <div>
-                    <h3>Cinéphile</h3>
-                    <h4>Films d'horreur/épouvante,fantastique et romance</h4>
+                    <h3 class="hobbies">Cinéphile :</h3>
+                    <h4 class="hobbies-continuation">Films d'horreur/épouvante,fantastique et romance.</h4>
                 </div>
                 <div>
-                    <h3>Expositions</h3>
-                    <h4>de peintures et photos</h4>
+                    <h3 class="hobbies">Expositions :</h3>
+                    <h4 class="hobbies-continuation">peintures et photos.</h4>
                 </div>
             </div>
             <!-- fin de centre d'intérêts -->
@@ -202,17 +391,26 @@
         </main>
         <footer>
             <div>
-                <h2> Me Contacter</h2>
-                <div>
-                    <h2>
-                        LinkedIn
-                    </h2>
-                    <i class="fab fa-linkedin-in"></i>
+                <div class="social">
+                <h3 class="social__item"> Me Contacter</h3>
+                
+                <h3 class="social__item">LinkedIn</h3>
+                <i class="fab fa-linkedin-in"></i>        
+                    
+                <h3 class="social__item">GitHub</h3>    
                 </div>
                 
                 
             </div>
             <!-- fin de contact plus réseaux sociaux-->
         </footer>
+        <script src="/assets/js/app.js">
+
+        </script>
     </body>
 </html>
+<?php
+unset($_SESSION['inputs']);
+unset($_SESSION['success']);
+unset($_SESSION['errors']);
+?>
