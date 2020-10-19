@@ -1,6 +1,6 @@
 let modal = null
 
-const focusableSelector = 'button, a,input,textarea'
+const focusableSelector = 'button, a, input, textarea'
 let focusables = []
 let previouslyFocusedElement = null
 

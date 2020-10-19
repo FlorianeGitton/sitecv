@@ -2,56 +2,52 @@
 
 class Form {
 
-    private $datas = [];
+    private $data = [];
 
-    public function __construct($datas = []){
+    public function __construct($datas = [])
+    {
         $this->datas = $datas;
     }
-
-    private function getValue($name){
-
+    
+    private function input ($type, $name, $label)
+    {
         $value = "";
 
-        if(isset($this->datas[$name])){
-            return $this->datas[$name];
-        }else{
-           return '';
+        if(isset($this->datas[$name]))
+        {
+            $value = $this->datas[$name];
         }
-    }
-
-    private function input($type, $name, $label){
-        
-        $value = $this->getValue($name);
 
         if($type == 'textarea'){
-
-            $input = "<textarea required name=\"$name\" id=\"input$name\"></textarea>";
-
+            $input = "<textarea required name=\"$name\" id=\"input$name\">$value</textarea>";
         }else{
-
-            $input = "<input required type=\"$type\" name=\"$name\" id=\"input$name\" value=\"\">";
+            $input = "<input required type=\"$type\" name=\"$name\" id=\"input$name\" value=\"$value\">";
         }
-        
+
         
 
-        return "<div class=\"form\">
-                        <label for=\"input$name\">Votre $label</label>
-                        $input
-                    </div>";
+        return "<div>
+        <label for=\"input$name\">$label</label>
+        <br>
+        $input
+
+        </div>";
+
+    }
+    public function text($name, $label)
+    {
+
+        return $this->input('text', $name, $label);
     }
 
-    public function text($name, $label){
-
-         return $this->input('text', $name, $label);
-    }
-
-    public function email($name, $label){
+    public function email($name, $label)
+    {
 
         return $this->input('email', $name, $label);
     }
-
-    public function textarea($name, $label){
-
+    
+    public function textarea($name, $label)
+    {
         return $this->input('textarea', $name, $label);
     }
 }

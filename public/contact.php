@@ -1,18 +1,27 @@
 <?php
 
+require '_include.php';
+
 $errors = [];
 
-$validator = new Validator($_POST);
+$message = $_POST['message'];
+
+// $headers = 'FROM: test@site.net';
+
+mail('gitton.foriane@gmail.com', "Formulaire de contact", $message, headers);
+
+$validator = New Validator($_POST);
 
 $validator->check('name', 'required');
 
 $validator->check('email', 'required');
 
-$validator->check('email', 'email');
+$validator->check('name', 'email');
 
-$validator->check('message', 'required');
+$validator->check('name', 'required');
 
 $errors = $validator->errors();
+
 
 // if(!array_key_exists('name', $_POST) || $_POST['name'] == ''){
 //     $errors['name'] = "Vous n'avez pas renseigné votre nom";
@@ -27,6 +36,8 @@ $errors = $validator->errors();
 //     $errors['message'] = "vous n'avez pas renseigné votre message";
 // }
 
+session_start();
+
 
 
 if(!empty($errors)){
@@ -39,9 +50,9 @@ if(!empty($errors)){
 
     $message = $_POST['message'];
 
-    $headers = 'FROM: site@local.dev';
+    $headers = 'FROM: ' . $_POST['email'];
 
-    mail('gitton.floriane@gmail.com', 'Formulaire de contact', $message, $headers);  
+    mail('gitton.floriane@gmail.com', 'Formulaire de contact' . $_POST['name'] , $message, $headers);  
 
     header('location: index.php');
 

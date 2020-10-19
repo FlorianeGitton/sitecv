@@ -29,9 +29,10 @@ h1 {
 
 .button{
     text-align: right;
-    color: #1B0A31;
-    
+    color: #1B0A31; 
 }
+
+
 .button .btn {
     text-decoration:none;
     color: #1B0A31;
@@ -138,7 +139,7 @@ strong {
 }
 
 /* fenêtre modale ------------------------------------------------------------------------------------------------------*/
-#modal, #modalExp, #modalStudy{
+#modal, #modalExp, #modalStudy, #contact{
     background-color:rgba(27,10,49, 0.95);
     }
 
@@ -212,8 +213,31 @@ strong {
     font-family: 'Bai Jamjuree',sans-serif;
     margin-top: 25px;
 }
-/* fin de modal basique --------------------------------------------------------------------------------------------*/
 
+/* fin de la modal basique */
+/* ------------------------------------------------------------------------------------------------------------- */
+/* début modale contact */
+
+.contact{
+    text-align: center;
+    box-sizing: content-box;
+    
+}
+.contact form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.contact__field {
+    width: 50%;
+    padding: 0 15px;
+    margin: 0 5px;
+}
+
+
+/* fin de la modal contact */
+/* ------------------------------------------------------------------------------------------------------------- */
+/* début modale projet */
 
 .modal-body__title {
     font-family: 'Assistant',sans-serif;

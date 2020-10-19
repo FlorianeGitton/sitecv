@@ -1,5 +1,5 @@
 <?php
-    include '_inc.php'; 
+    include '_include.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,29 +19,61 @@
             
             
             <div class="button">
-                <a class="btn" href="#contact"><button class="button_btn"><span>Me Contacter</span></button></a>
+                <button class="btn"><span><a class="button_btn js-modal" href="#contact">Me Contacter</a></span></button>
 
                 <aside id="contact" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
                     <div class="modal-wrapper js-modal-stop">
-                        <button class="js-modal-close">fermer la boite modale</button>
-                    </div>
-                    <div class="modal-body">
-                        <h3 class="modal-body__headline">Me contacter</h3>
-                        <form action="contact.php" method="POST">
+                        <div class="modal-header">
+                            <button class="js-modal-close modal-header__btn button_btn">fermer la boite modale</button>
+                        </div>
+                        <div class="modal-body contact">
+                            <h3 class="modal-body__headline">Me contacter</h3>
+                        
                             <div>
-                                <label for="inputname">Votre nom</label>
-                                <input type="text" name="name" id="inputname">
+
+                                <?php if(array_key_exists('errors', $_SESSION)): ?>
+                                
+                                <div class="errors">
+                                    <?= implode('<br>', $_SESSION['errors']); ?>
+                                </div>
+                
+                                <?php  endif; ?>
+                
+                                <?php if(array_key_exists('success', $_SESSION)): ?>
+                                
+                                <div class="success">
+                                    Votre email à bien été envoyé
+                                </div>
+                
+                                <?php  endif; ?>
+                
+                                
+                                <form action="contact.php" method="POST">
+                                    <?php $form=new Form(); ?>
+                                    <div class="contact__field">
+                                        <div>
+                                            <?= $form->text('name', 'Votre Nom');?>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    
+                                    <div class="contact__field">
+                                        <?= $form->email('email', 'Votre Email');?>
+                                    </div>
+                                    <div>
+                                        <?= $form->textarea('message', 'Votre message');?>
+                
+                                        <button type="submit">Envoyer</button>
+                                    </div>
+                                        
+                                    
+                                </form>
+                
+                                <!-- <h2>Debug :</h2>
+                                <?= var_dump($_SESSION); ?> -->
                             </div>
-                            <div>
-                                <label for="inputname">Votre email</label>
-                                <input type="text" name="email" id="inputemail">
-                            </div>
-                            <div>
-                                <label for="inputmessage">Votre message</label>
-                                <textarea name="message" id="inputmessage" cols="30" rows="10"></textarea>
-                            </div>
-                            <button type="submit">Envoyer</button>
-                        </form>
+                        </div>
 
                     </div>
                 </aside>
@@ -49,42 +81,7 @@
             </div>
 
 
-            <div>
-
-                <?php if(array_key_exists('errors', $_SESSION)): ?>
-                
-                <div >
-                    <?= implode('<br>', $_SESSION['errors']); ?>
-                </div>
-
-                <?php  endif; ?>
-
-                <?php if(array_key_exists('success', $_SESSION)): ?>
-                
-                <div>
-                    Votre email à bien été envoyé
-                </div>
-
-                <?php  endif; ?>
-
-                
-                <form action="contact.php" method="POST">
-                    
-                    <?php $form= new Form(isset($_SESSION['inputs']) ? $_SESSION['inputs'] : []); ?>
-                    <?= $form->text('name', 'Votre Nom'); ?>
-                    <?= $form->email('email', 'Votre email'); ?>
-                    <div>
-
-                        <?= $form->textarea('message', 'votre message'); ?>
-                        
-                        <button type="submit">Envoyer</button>
-                    </div>
-                </form>
-
-                <h2>Debug :</h2>
-                <?= var_dump($_SESSION); ?>
-
-            </div>
+            
 
 
 
@@ -378,7 +375,7 @@
                 </div>
                 <div>
                     <h3 class="hobbies">Cinéphile :</h3>
-                    <h4 class="hobbies-continuation">Films d'horreur/épouvante,fantastique et romance.</h4>
+                    <h4 class="hobbies-continuation">films d'horreur/épouvante,fantastique et romance.</h4>
                 </div>
                 <div>
                     <h3 class="hobbies">Expositions :</h3>
