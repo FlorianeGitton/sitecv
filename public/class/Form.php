@@ -19,15 +19,15 @@ class Form {
         }
 
         if($type == 'textarea'){
-            $input = "<textarea required name=\"$name\" id=\"input$name\">$value</textarea>";
+            $input = "<textarea class=\"contact__field__input-message\" required name=\"$name\" id=\"input$name\">$value</textarea>";
         }else{
-            $input = "<input required type=\"$type\" name=\"$name\" id=\"input$name\" value=\"$value\">";
+            $input = "<input class=\"contact__field__input\" required type=\"$type\" name=\"$name\" id=\"input$name\" value=\"$value\">";
         }
 
         
 
-        return "<div>
-        <label for=\"input$name\">$label</label>
+        return "<div class=\"contact__field\">
+        <label class=\"contact__field__label\" for=\"input$name\">$label</label>
         <br>
         $input
 

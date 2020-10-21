@@ -12,6 +12,7 @@ body,html{
 
 *:focus {
     box-shadow: 0 0 4px #1B0A31;
+    outline:none;
 }
 
 /* header{
@@ -212,6 +213,7 @@ strong {
     text-transform: uppercase;
     font-family: 'Bai Jamjuree',sans-serif;
     margin-top: 25px;
+    color: #1B0A31;
 }
 
 /* fin de la modal basique */
@@ -224,14 +226,61 @@ strong {
     
 }
 .contact form {
-    display: flex;
-    flex-wrap: wrap;
     width: 100%;
+    margin-top: 5vw;
 }
+
 .contact__field {
-    width: 50%;
-    padding: 0 15px;
-    margin: 0 5px;
+    width: 100%;
+    margin-top: 1.5vw;
+}
+.contact__field__label{
+    float: left;
+    font-size: 2.5vw;
+    font-weight: 300;
+}
+
+.contact__field__input{
+    width: 100%;
+    font-size: 3vw;
+    font-weight: 200;
+    font-family: 'Assistant', sans-serif;
+    color: #2f3031;
+    background-color: #f2f3f8 ;
+    border: 1px solid #1B0A31;
+    border-radius: 3px;
+}
+
+
+.contact__field__input-message{
+    width: 100%;
+    padding-bottom: 6vw;
+    font-size: 3vw;
+    font-weight: 200;
+    font-family: 'Assistant', sans-serif;
+    color: #2f3031;
+    background-color: #f2f3f8;
+    border: 1px solid #1B0A31;
+    border-radius: 3px;
+}
+
+.contact__send{
+    float: right;
+    margin-top: 2.5vw;
+    padding: 1vw;
+    border: 1px solid #1B0A31;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: 'Bai Jamjuree', sans-serif;
+    font-weight: 400; 
+    background-color: #EFF1F7;
+    color: #1B0A31;
+}
+.contact__send:hover{
+    background-color:#1B0A31 ;
+    color: #EFF1F7;
+    transition: all 0.5s ease-in-out;
 }
 
 

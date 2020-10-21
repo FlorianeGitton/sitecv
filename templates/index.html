@@ -19,7 +19,7 @@
             
             
             <div class="button">
-                <button class="btn"><span><a class="button_btn js-modal" href="#contact">Me Contacter</a></span></button>
+                <button class=""><span><a class="button_btn js-modal btn" href="#contact">Me Contacter</a></span></button>
 
                 <aside id="contact" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
                     <div class="modal-wrapper js-modal-stop">
@@ -50,22 +50,16 @@
                                 
                                 <form action="contact.php" method="POST">
                                     <?php $form=new Form(); ?>
-                                    <div class="contact__field">
-                                        <div>
-                                            <?= $form->text('name', 'Votre Nom');?>
-                                        </div>
-                                    </div>
                                     
+                                        
+                                        <?= $form->text('name', 'Votre nom');?>
+                                        
+                                        <?= $form->email('email', 'Votre email');?>
                                     
-                                    
-                                    <div class="contact__field">
-                                        <?= $form->email('email', 'Votre Email');?>
-                                    </div>
-                                    <div>
                                         <?= $form->textarea('message', 'Votre message');?>
-                
-                                        <button type="submit">Envoyer</button>
-                                    </div>
+
+                                        <button class="contact__send" type="submit">Envoyer</button>
+                                    
                                         
                                     
                                 </form>
