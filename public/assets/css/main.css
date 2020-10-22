@@ -34,30 +34,30 @@ h1 {
 }
 
 
-.button .btn {
-    text-decoration:none;
+.button .button__btn {
+    /* font-size: 0%; */
     color: #1B0A31;
-    
-}
-.button .btn:hover {
-    text-decoration:none;
-    color:#EFF1F7; 
-}
-.button_btn{
-    
-    padding: 20px 30px;
+    padding: 1.3vw 1.7vw;
     border: 1px solid #1B0A31;
     border-radius: 4px;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 1.3vw;
     font-family: 'Bai Jamjuree', sans-serif;
     font-weight: 400;
 }
-
-.button_btn:hover{
+.button .button__btn:hover {
     background-color: #1B0A31;
     color: #EFF1F7;
     transition: all 0.5s ease-in-out;
+     
+}
+.button__btn-link{
+    text-decoration:none;   
+}
+
+.button__btn_link:hover{
+    text-decoration:none;
+    
 }
 
 .resume {
@@ -267,7 +267,7 @@ strong {
 .contact__send{
     float: right;
     margin-top: 2.5vw;
-    padding: 1vw;
+    padding: 1vw 1.5vw;
     border: 1px solid #1B0A31;
     border-radius: 4px;
     text-transform: uppercase;
