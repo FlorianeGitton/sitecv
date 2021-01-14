@@ -72,10 +72,13 @@ strong {
     margin-top: 150px;
 }
 
-.link-style-title {
+.link-style-project {
     text-decoration: none; 
-    color: #1B0A31;  
+    color: #1B0A31; 
+    font-weight: 300; 
 } 
+
+
 
 .link-modal{
     margin-top: 0;
@@ -101,9 +104,20 @@ strong {
     font-size: 3.5vw;
     font-weight: 300;
 }
-.link-style:hover{
-    color: #2f3031;
-    font-weight: 200;
+
+/*îcone for modal window*/
+
+.fa-external-link-square-alt{
+    font-size: 1.7vw;  
+}
+.external-link-contactcv{
+    font-size: 1vw;
+}
+.programm-oclock {
+    font-size: 1.5vw;
+}
+.external-link-project{
+    font-size: 3vw;
 }
 .text {
     margin-top: 0;
@@ -127,10 +141,7 @@ strong {
     font-size: 3vw;
     font-weight: 300;
 }
-.link-school:hover{
-    color: #2f3031;
-    font-weight: 200;
-}
+
 
 
 /* tooltip ------------------------------------------------------------------------------------------------------*/
